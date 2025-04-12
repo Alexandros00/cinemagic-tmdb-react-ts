@@ -1,5 +1,6 @@
 import styles from "./LandingPage.module.scss";
 import { useGetTrendingMovies } from "../../hooks/useGetTrendingMovies";
+import MovieCard from "../../components/MovieCard/MovieCard";
 
 const LandingPage = () => {
   const { movies, isLoading, error } = useGetTrendingMovies();
@@ -19,9 +20,11 @@ const LandingPage = () => {
         <h1 className={styles.title}>Trending Movies</h1>
       </header>
 
-      {movies.map((movie) => (
-        <article>{movie.title}</article>
-      ))}
+      <section className={styles.moviesSection}>
+        {movies.map((movie) => (
+          <MovieCard key={movie.id} movie={movie} />
+        ))}
+      </section>
     </main>
   );
 };
