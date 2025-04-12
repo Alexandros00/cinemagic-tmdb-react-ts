@@ -6,7 +6,7 @@ import { MoviesResponse } from "../models/MoviesResponse";
 
 export const useGetTrendingMovies = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   const service = useMemo(
@@ -16,7 +16,6 @@ export const useGetTrendingMovies = () => {
 
   const getMovies = useCallback(
     async (signal: AbortSignal) => {
-      setIsLoading(true);
       try {
         const response = await service.fetchEntities({ signal });
         setMovies(response.results || []);
