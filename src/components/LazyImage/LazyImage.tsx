@@ -1,19 +1,18 @@
 import { JSX, useEffect, useRef, useState } from "react";
+import { CustomPlaceholder } from "../CustomPlaceholder";
+import { handleNonValidImage } from "../../utils/helpers";
+import { observerCardImage } from "../../utils/observer";
+import styles from "./LazyImage.module.scss";
 
-import { CustomPlaceholder } from "./CustomPlaceholder";
-import { handleNonValidImage } from "../utils/helpers";
-import { observerCardImage } from "../utils/observer";
 interface LazyImageProps {
   src: string;
   alt: string;
   ariaLabel: string;
-  styles?: Record<string, string>;
 }
 export const LazyImage = ({
   src,
   alt = "",
-  ariaLabel = "",
-  styles = {}
+  ariaLabel = ""
 }: Partial<LazyImageProps>): JSX.Element => {
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -46,7 +45,6 @@ export const LazyImage = ({
         onError={handleNonValidImage}
         onLoad={() => setIsLoaded(true)}
         className={styles.image}
-        style={{ width: "100%" }} // TODO: delete this line
       />
     </div>
   );

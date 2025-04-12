@@ -1,5 +1,5 @@
 import { Movie } from "../../models/Movie";
-import { LazyImage } from "../LazyImage";
+import { LazyImage } from "../LazyImage/LazyImage";
 import styles from "./MovieCard.module.scss";
 
 const VoteContainer = ({ vote_average }: { vote_average?: number | null }) => {
