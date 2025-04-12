@@ -1,6 +1,6 @@
 import styles from "./LandingPage.module.scss";
 import { useGetTrendingMovies } from "../../hooks/useGetTrendingMovies";
-import MovieCard from "../../components/MovieCard/MovieCard";
+import MovieCard from "@components/MovieCard/MovieCard";
 
 const LandingPage = () => {
   const { movies, isLoading, error } = useGetTrendingMovies();
