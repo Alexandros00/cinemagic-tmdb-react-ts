@@ -1,6 +1,6 @@
 import { Genre } from "./Genre";
 
-export type Movie = {
+export interface Movie {
   id: number;
   poster_path: string;
   title: string;
@@ -8,5 +8,12 @@ export type Movie = {
   genre_ids: number[];
   genres?: Genre[];
   vote_average: number;
+  vote_count: number;
   overview: string;
-};
+  original_language: string;
+  original_title: string;
+  backdrop_path: string;
+  adult: boolean;
+  popularity: number;
+  video: boolean;
+}
