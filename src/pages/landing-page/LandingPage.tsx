@@ -17,7 +17,7 @@ const LandingPage = () => {
   return (
     <main className={styles.landingPage}>
       <header>
-        <h1 className={styles.title}>Trending Movies</h1>
+        <h2>Trending Movies</h2>
       </header>
 
       <section className={styles.moviesSection}>
