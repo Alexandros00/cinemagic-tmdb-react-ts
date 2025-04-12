@@ -1,0 +1,45 @@
+import { useCallback, useEffect, useMemo, useState } from "react";
+import { Movie } from "../models/Movie";
+import { Service } from "../services/Service";
+import { AxiosError } from "axios";
+import { MoviesResponse } from "../models/MoviesResponse";
+
+export const useGetTrendingMovies = () => {
+  const [movies, setMovies] = useState<Movie[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const service = useMemo(
+    () => new Service<MoviesResponse>("movie/now_playing"),
+    []
+  );
+
+  const getMovies = useCallback(
+    async (signal: AbortSignal) => {
+      setIsLoading(true);
+      try {
+        const response = await service.fetchEntities({ signal });
+        setMovies(response.results || []);
+      } catch (error) {
+        console.error("Error fetching movies: ", error);
+        setError((error as AxiosError).message);
+      }
+      setIsLoading(false);
+    },
+    [service]
+  );
+
+  useEffect(() => {
+    const abortController = new AbortController();
+    getMovies(abortController.signal);
+    return () => {
+      abortController.abort();
+    };
+  }, [getMovies]);
+
+  return {
+    movies,
+    isLoading,
+    error
+  };
+};
