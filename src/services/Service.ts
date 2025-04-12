@@ -24,9 +24,9 @@ export class Service<T> extends ServiceConfig {
   }: {
     params?: Partial<ParamsType>;
     signal: AbortSignal;
-  }): Promise<T[]> => {
+  }): Promise<T> => {
     try {
-      const response = await this._api.get<T[]>(this._path, {
+      const response = await this._api.get<T>(this._path, {
         params: { ...this._params, ...params },
         signal
       });
@@ -34,7 +34,7 @@ export class Service<T> extends ServiceConfig {
     } catch (error) {
       if (axios.isCancel(error)) {
         console.warn("Request was cancelled: ", error.message);
-        return [];
+        return {} as T;
       } else {
         console.error(error);
         throw new Error(`Error fetching data:${(error as Error).message}`);
