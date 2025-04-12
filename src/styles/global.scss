@@ -1,0 +1,96 @@
+@use "../styles/variables" as *;
+
+/* roboto-regular - greek_latin */
+@font-face {
+  font-display: swap;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/roboto-v32-greek_latin-regular.woff2") format("woff2");
+}
+/* roboto-700 - greek_latin */
+@font-face {
+  font-display: swap;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/roboto-v32-greek_latin-700.woff2") format("woff2");
+}
+
+html,
+body,
+#app {
+  font-family: $font-primary;
+  line-height: $line-height;
+  font-weight: $font-weight;
+  font-size: $font-size-base;
+
+  color: $text-color;
+  background-color: $background-color;
+
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: $tablet) {
+  html,
+  body,
+  #app {
+    font-size: 18px;
+  }
+}
+
+@media (min-width: $desktop) {
+  html,
+  body,
+  #app {
+    font-size: 22px;
+    h1 {
+      font-size: 2rem;
+    }
+    h2 {
+      font-size: 1.5rem;
+    }
+  }
+}
+#app {
+  padding: $nav-height 0;
+  min-height: 100vh;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border-radius: 0.3rem;
+  border: none;
+  background-color: $primary-color;
+  color: white;
+  padding: 0.5rem 1rem;
+  width: max-content;
+}
+
+button:hover,
+button:focus {
+  outline: none;
+  background-color: lightcoral;
+}
+
+.noScroll {
+  overflow: hidden;
+}
+
+.noStylesButton {
+  all: unset;
+  display: inline-block;
+}
+.noStylesButton:hover,
+.noStylesButton:focus {
+  all: unset;
+  display: inline-block;
+}
