@@ -1,0 +1,44 @@
+@use "../../styles/variables" as *;
+
+.movieCard {
+  width: 90vw;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+  overflow: hidden;
+}
+
+.content {
+  padding: 0 1rem;
+  padding-bottom: 0.5rem;
+}
+
+.additionalInfo {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.voteContainer {
+  display: grid;
+  justify-items: center;
+}
+
+.overview {
+  overflow: auto;
+  height: 5.5rem;
+}
+
+.genres {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.genre {
+  background-color: rgb(173, 209, 210);
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.3rem;
+  text-wrap: nowrap;
+}
