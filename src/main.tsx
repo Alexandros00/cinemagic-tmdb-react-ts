@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./styles/global.scss";
 import { ErrorBoundary } from "react-error-boundary";
-import { ErrorFallback } from "@components/ErrorFallback";
+import { ErrorFallback } from "@/components/ErrorFallback/ErrorFallback";
 import { BrowserRouter } from "react-router-dom";
 
 const rootElement = document.getElementById("root");

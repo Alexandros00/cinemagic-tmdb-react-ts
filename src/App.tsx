@@ -1,12 +1,12 @@
 import Navbar from "@components/Navbar/Navbar";
-import LandingPage from "./pages/landing-page/LandingPage";
+import LandingPage from "@pages/landing-page/LandingPage";
 import { Route, Routes } from "react-router-dom";
 import { lazy, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { ErrorFallback } from "./components/ErrorFallback";
-import PageLoader from "./components/PageLoader";
+import { ErrorFallback } from "@components/ErrorFallback/ErrorFallback";
+import PageLoader from "@/components/PageLoader/PageLoader";
 
-const NotFound = lazy(() => import("@components/NotFound"));
+const NotFound = lazy(() => import("@/components/NotFound/NotFound"));
 
 function App() {
   return (
