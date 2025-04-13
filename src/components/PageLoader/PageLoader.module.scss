@@ -1,0 +1,20 @@
+@use "../../styles/variables" as *;
+
+.PageLoader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+  strong {
+    font-size: x-large;
+  }
+}
+
+.icon {
+  height: calc($nav-height / 1.5);
+  color: $primary-color;
+}
