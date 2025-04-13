@@ -6,10 +6,18 @@ const LandingPage = () => {
   const { movies, isLoading, error } = useGetTrendingMovies();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <main className={styles.landingPage}>
+        <h2>Loading...</h2>
+      </main>
+    );
   }
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <main className={styles.landingPage}>
+        <h2>Error: {error}</h2>
+      </main>
+    );
   }
   if (!movies || movies.length === 0) {
     return <div>No movies found</div>;
