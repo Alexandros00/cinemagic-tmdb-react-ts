@@ -18,7 +18,7 @@ export const useGetTrendingMovies = () => {
     async (signal: AbortSignal) => {
       try {
         const response = await service.fetchEntities({ signal });
-        setMovies(response.results || []);
+        setMovies(response?.results || []);
       } catch (error) {
         console.error("Error fetching movies: ", error);
         setError((error as AxiosError).message);
