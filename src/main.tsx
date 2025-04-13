@@ -2,12 +2,16 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./styles/global.scss";
+import { ErrorBoundary } from "react-error-boundary";
+import { ErrorFallback } from "@components/ErrorFallback";
 
 const rootElement = document.getElementById("root");
 if (!rootElement) throw new Error("No root element found!");
 
 createRoot(rootElement).render(
   <StrictMode>
-    <App />
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <App />
+    </ErrorBoundary>
   </StrictMode>
 );
