@@ -28,7 +28,7 @@ const LandingPage = () => {
         <h2>Trending Movies</h2>
       </header>
 
-      <section className={styles.moviesSection}>
+      <section className={styles.moviesSection} data-testid="movies-section">
         {movies.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}

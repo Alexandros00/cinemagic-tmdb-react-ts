@@ -3,25 +3,31 @@ import { LazyImage } from "../LazyImage/LazyImage";
 import styles from "./MovieCard.module.scss";
 
 const VoteContainer = ({ vote_average }: { vote_average?: number | null }) => {
+  const voteAverageFixed = vote_average
+    ? vote_average.toFixed(1) + " / 10"
+    : "No rating available";
+
   return (
     <div className={styles.voteContainer}>
-      <span className={styles.voteAverage}>
-        {vote_average
-          ? vote_average.toFixed(1) + " / 10"
-          : "No rating available"}
+      <span
+        className={styles.voteAverage}
+        data-testid="vote_average"
+        aria-label={`Vote average: ${voteAverageFixed}`}
+      >
+        {voteAverageFixed}
       </span>
-      <meter
-        min={0}
-        max={10}
-        low={4.9}
-        high={7.5}
-        optimum={10}
-        className={styles.voteMeter}
-        value={vote_average ? vote_average : 0}
-        aria-label={`Vote average: ${
-          vote_average ? vote_average.toFixed(1) : "No rating available"
-        }`}
-      />
+      {vote_average && (
+        <meter
+          min={0}
+          max={10}
+          low={4.9}
+          high={7.5}
+          optimum={10}
+          className={styles.voteMeter}
+          value={vote_average ? vote_average : 0}
+          aria-hidden={true}
+        />
+      )}
     </div>
   );
 };
@@ -32,12 +38,10 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
       <LazyImage
         src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
         alt={`Movie poster for ${movie.title}`}
-        ariaLabel={`Movie poster for ${movie.title}`}
-        styles={styles}
       />
       <div className={styles.content}>
         <div className={styles.additionalInfo}>
-          <time>
+          <time data-testid="release-year">
             {movie.release_date
               ? new Date(movie.release_date).getFullYear() + ""
               : "No year available"}
