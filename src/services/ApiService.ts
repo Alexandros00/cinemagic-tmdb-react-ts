@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from "axios";
+import axios, { AxiosInstance, CanceledError } from "axios";
 
 export class ApiService {
   protected readonly _apiKey: string = import.meta.env.VITE_TMDB_API_KEY || "";
@@ -19,6 +19,20 @@ export class ApiService {
       throw new Error(
         "API token is not defined. Please set VITE_TMDB_API_TOKEN."
       );
+    this._api.interceptors.response.use(
+      (response) => response ?? { data: {} },
+      (error) => {
+        if (error instanceof CanceledError) {
+          console.log("Request was canceled.");
+          return {};
+        }
+        if (error.response) {
+          console.error("API Error:", error.response.data);
+          return Promise.reject(error.response.data);
+        }
+        return Promise.reject(error);
+      }
+    );
   }
 
   protected get api(): AxiosInstance {
