@@ -7,12 +7,10 @@ import styles from "./LazyImage.module.scss";
 interface LazyImageProps {
   src: string;
   alt: string;
-  ariaLabel: string;
 }
 export const LazyImage = ({
   src,
-  alt = "",
-  ariaLabel = ""
+  alt = ""
 }: Partial<LazyImageProps>): JSX.Element => {
   const imgRef = useRef<HTMLImageElement>(null);
 
@@ -41,7 +39,6 @@ export const LazyImage = ({
         ref={imgRef}
         data-src={src}
         alt={alt}
-        aria-label={ariaLabel}
         onError={handleNonValidImage}
         onLoad={() => setIsLoaded(true)}
         className={styles.image}
