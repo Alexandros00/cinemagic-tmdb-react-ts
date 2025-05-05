@@ -32,7 +32,13 @@ const VoteContainer = ({ vote_average }: { vote_average?: number | null }) => {
   );
 };
 
-const MovieCard = ({ movie }: { movie: Movie }) => {
+const MovieCard = ({
+  movie,
+  genres
+}: {
+  movie: Movie;
+  genres: Map<number, string> | undefined;
+}) => {
   return (
     <article className={styles.movieCard}>
       <LazyImage
@@ -52,11 +58,13 @@ const MovieCard = ({ movie }: { movie: Movie }) => {
         <h3 className={styles.movieCard__title}>{movie.title}</h3>
         <p className={styles.overview}>{movie.overview}</p>
         <div className={styles.genres}>
-          {movie.genre_ids.map((genre, idx) => (
-            <span className={styles.genre} key={idx}>
-              {genre}
-            </span>
-          ))}
+          {genres &&
+            genres?.size > 0 &&
+            movie.genre_ids.map((genre, idx) => (
+              <span className={styles.genre} key={idx}>
+                {genres?.get(genre)}
+              </span>
+            ))}
         </div>
       </div>
     </article>

@@ -1,9 +1,11 @@
 import styles from "./LandingPage.module.scss";
 import { useGetTrendingMovies } from "../../hooks/useGetTrendingMovies";
 import MovieCard from "@components/MovieCard/MovieCard";
+import { useGetAllGenres } from "@/hooks/useGetAllGenres";
 
 const LandingPage = () => {
   const { movies, isLoading, error } = useGetTrendingMovies();
+  const { genres } = useGetAllGenres();
 
   if (isLoading) {
     return (
@@ -30,7 +32,7 @@ const LandingPage = () => {
 
       <section className={styles.moviesSection} data-testid="movies-section">
         {movies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
+          <MovieCard key={movie.id} movie={movie} genres={genres} />
         ))}
       </section>
     </main>
