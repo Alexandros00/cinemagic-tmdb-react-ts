@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { Movie } from "../models/Movie";
-import { TMDBService } from "../services/TMDBService";
 import { AxiosError } from "axios";
 import { MoviesResponse } from "../models/MoviesResponse";
+import { getTMDBService } from "@/services/TMDBService";
 
 export const useGetTrendingMovies = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -10,7 +10,7 @@ export const useGetTrendingMovies = () => {
   const [error, setError] = useState<string | null>(null);
 
   const service = useMemo(
-    () => new TMDBService<MoviesResponse>("movie/now_playing"),
+    () => getTMDBService<MoviesResponse>("movie/now_playing"),
     []
   );
 

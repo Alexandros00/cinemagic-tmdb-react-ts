@@ -41,3 +41,12 @@ export class TMDBService<T> extends ApiService {
     }
   };
 }
+
+const serviceCache = new Map<string, TMDBService<unknown>>();
+
+export const getTMDBService = <T>(path: string): TMDBService<T> => {
+  if (!serviceCache.has(path)) {
+    serviceCache.set(path, new TMDBService<T>(path));
+  }
+  return serviceCache.get(path) as TMDBService<T>;
+};
