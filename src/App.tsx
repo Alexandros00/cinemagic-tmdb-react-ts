@@ -13,7 +13,6 @@ function App() {
     <ErrorBoundary FallbackComponent={ErrorFallback}>
       <Suspense fallback={<PageLoader />}>
         <Navbar />
-        <LandingPage />
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="*" element={<NotFound />} />
