@@ -12,3 +12,9 @@ export interface MoviesResponse {
   total_pages: number;
   total_results: number;
 }
+export interface MoviesResponseMetadata {
+  dates: Dates;
+  page: number;
+  total_pages: number;
+  total_results: number;
+}
