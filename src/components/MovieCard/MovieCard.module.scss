@@ -1,5 +1,15 @@
 @use "../../styles/variables" as *;
 
+.movieCardButtonContr {
+  all: unset;
+  cursor: pointer;
+  &:hover,
+  &:focus {
+    background-color: transparent;
+    scale: 1.01;
+  }
+}
+
 .movieCard {
   width: 90vw;
   box-shadow: $box-shadow;
