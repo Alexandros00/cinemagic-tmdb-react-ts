@@ -3,6 +3,7 @@
 .movieCardButtonContr {
   all: unset;
   cursor: pointer;
+
   &:hover,
   &:focus {
     background-color: transparent;
@@ -18,8 +19,16 @@
 }
 
 .content {
+  display: grid;
+  grid-template-rows: max-content max-content 1fr max-content;
   padding: 0 1rem;
   padding-bottom: 0.5rem;
+  overflow: hidden;
+  h3 {
+    margin: 0;
+    overflow: auto;
+    height: 5rem;
+  }
 }
 
 .additionalInfo {
@@ -51,4 +60,33 @@
   padding: 0.1rem 0.3rem;
   border-radius: 0.3rem;
   text-wrap: nowrap;
+}
+
+@media (min-width: 768px) {
+  .movieCardButtonContr {
+    width: 100%;
+  }
+
+  .movieCard {
+    display: grid;
+    width: 100%;
+    height: 100%;
+  }
+
+  .content {
+    font-size: x-large;
+  }
+
+  .genres {
+    width: 100%;
+  }
+  .genre {
+    padding: 0.1rem 1.5rem;
+  }
+}
+
+@media (min-width: 1366px) {
+}
+
+@media (min-width: 1920px) {
 }

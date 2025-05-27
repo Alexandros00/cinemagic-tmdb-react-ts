@@ -68,9 +68,9 @@ const MovieCard = ({
             {genres &&
               genres?.size > 0 &&
               movie.genre_ids.map((genre, idx) => (
-                <span className={styles.genre} key={idx}>
+                <div className={styles.genre} key={idx}>
                   {genres?.get(genre)}
-                </span>
+                </div>
               ))}
           </div>
         </div>
