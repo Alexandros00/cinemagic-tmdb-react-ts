@@ -14,3 +14,27 @@ export function handleNonValidImage(
   target.onerror = null;
   target.src = imagePath;
 }
+
+/**
+ * Debounce function to limit the number of times a function is called.
+ * @param callbackFn The function to be called after the delay.
+ * @param delay The delay in milliseconds.
+ * @returns A function that will call the callbackFn after the delay.
+ */
+export function debounce<T extends unknown[]>(
+  callbackFn: (...args: T) => void,
+  delay = 500
+) {
+  let timer: ReturnType<typeof setTimeout>;
+
+  const debounced = (...rest: T) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      callbackFn(...rest);
+    }, delay);
+  };
+
+  debounced.cancel = () => clearTimeout(timer);
+
+  return debounced;
+}
