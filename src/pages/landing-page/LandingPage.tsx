@@ -6,6 +6,7 @@ import InfiniteScrollSentinel from "@/components/InfiniteScrollSentinel/Infinite
 import Modal from "@/components/Modal/Modal";
 import { useNavigate, useParams } from "react-router-dom";
 import MovieDetails from "@/components/MovieDetails/MovieDetails";
+import TextInput from "@/components/TextInput/TextInput";
 
 const LandingPage = () => {
   const { id = "" } = useParams();
@@ -41,6 +42,7 @@ const LandingPage = () => {
 
   return (
     <main className={styles.landingPage}>
+      <TextInput />
       <header>
         <h2>Trending Movies</h2>
       </header>
